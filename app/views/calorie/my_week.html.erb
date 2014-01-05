@@ -7,6 +7,7 @@
       body { width: 1000px; margin: 20px auto;}
       </style>
     </head>
+  <% week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'] %>
     <ul style="list-style-type: none; display: inline-block;">
          <li style="list-style-type: none;" id="DAY_NAME">
          Constant Data
@@ -23,251 +24,18 @@
   </ul>
   <ul>
   </ul>
+  <% 7.times do |day|%>
   <ul style="list-style-type: none; display: inline-block;">
-         <li style="list-style-type: none;" id="DAY_NAME">
-         Monday  
-         </li>  
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
+    <li style="list-style-type: none;" id="DAY_NAME" name="<%=week[day]%>" >
+         <%= week[day] %>
          </li>
+         <% 10.times do |meal| %>  
          <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
+           <input type="text" value="Meal" id="CALORIE_INPUT" name="MEAL<%=meal%>" maxlength="4" class="activeText">
          </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>    
+         <% end %>         
   </ul>
-  <ul style="list-style-type: none; display: inline-block;">
-         <li style="list-style-type: none;" id="DAY_NAME">
-         Tuesday  
-         </li>  
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>    
-  </ul>
-  <ul style="list-style-type: none; display: inline-block;">
-         <li style="list-style-type: none;" id="DAY_NAME">
-         Wednesday  
-         </li>  
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>    
-  </ul>
-  <ul style="list-style-type: none; display: inline-block;">
-         <li style="list-style-type: none;" id="DAY_NAME">
-         Thursday  
-         </li>  
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>    
-  </ul>
-    <ul style="list-style-type: none; display: inline-block;">
-         <li style="list-style-type: none;" id="DAY_NAME">
-         Friday 
-         </li>  
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>    
-  </ul>
-  <ul style="list-style-type: none; display: inline-block;">
-         <li style="list-style-type: none;" id="DAY_NAME">
-         Saturday  
-         </li>  
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>    
-  </ul>
-  <ul style="list-style-type: none; display: inline-block;">
-         <li style="list-style-type: none;" id="DAY_NAME">
-         Sunday  
-         </li>           
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="USER" maxlength="4" class="activeText">
-         </li>    
-  </ul>
+  <% end %>
         
  
  </html>
