@@ -7,35 +7,39 @@
       body { width: 1000px; margin: 20px auto;}
       </style>
     </head>
-  <% week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'] %>
-    <ul style="list-style-type: none; display: inline-block;">
+ <body>
+     <ul style="list-style-type: none; display: inline-block;">
          <li style="list-style-type: none;" id="DAY_NAME">
          Constant Data
          </li>  
          <li style="list-style-type: none;">
-           <input type="text" value="Idle Burn Quantity" id="IDLE_BURN" name="USER" maxlength="4" class="activeText">
+           <input type="text" placeholder="Idle Burn Calories" id="BURN_DATA" name="IDLE_BURN" maxlength="4">
          </li>
          <li style="list-style-type: none;">
-           <input type="text" value="Aggressive Fast Quantity" id="LOW_FUEL" name="USER" maxlength="4" class="activeText">
+           <input type="text" placeholder="Fasting Caloric Goal" id="BURN_DATA" name="FASTING_FUELAGE" maxlength="4">
          </li>
          <li style="list-style-type: none;">
-           <input type="text" value="Baseline Intake Quantity" id="LIGHT_FUEL" name="USER" maxlength="4" class="activeText">
-         </li>   
-  </ul>
-  <ul>
-  </ul>
+           <input type="text" placeholder="Non-Fasting Caloric Goal" id="BURN_DATA" name="LEAN_FUELAGE" maxlength="4">
+         </li>
+         <li style="list-style-type: none;">
+           <input type="date" id="BURN_DATA" name="DATE" maxlength="4">
+         </li>
+      </ul>
+      <ul>
+      </ul>
   <% 7.times do |day|%>
-  <ul style="list-style-type: none; display: inline-block;">
-    <li style="list-style-type: none;" id="DAY_NAME" name="<%=week[day]%>" >
-         <%= week[day] %>
-         </li>
-         <% 10.times do |meal| %>  
-         <li style="list-style-type: none;">
-           <input type="text" value="Meal" id="CALORIE_INPUT" name="MEAL<%=meal%>" maxlength="4" class="activeText">
-         </li>
+      <ul style="list-style-type: none; display: inline-block;">
+        <li style="list-style-type: none;" id="DAY_NAME" name="<%=@week[day]%>">
+           <%= @week[day] %>
+           </li>
+           <% 10.times do |meal| %>  
+          <form>
+           <li style="list-style-type: none;">
+             <input type="text" placeholder="Meal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Meal'" onblur="submit_calories()" id="CALORIE_INPUT" name="<%=@week[day]%>MEAL<%=meal%>" maxlength="4">
+           </li>
+         </form>  
          <% end %>         
-  </ul>
+      </ul>
   <% end %>
-        
- 
+  </body>
  </html>

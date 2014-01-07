@@ -1,3 +1,5 @@
 class CalorieController < ApplicationController
-
-end
+  def my_week
+  @week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+  end
+ end
