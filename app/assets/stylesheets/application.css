@@ -1,6 +1,8 @@
+
+
 body
 {
-background-color:#2F4F4F;
+background-color:#2A323A;
 }
 
 #CALORIE_INPUT {
@@ -10,10 +12,14 @@ padding-left: 21px;
 padding-top: 1px;
 padding-right: 3px;
 padding-bottom: 1px;
+color: #555;  
 font-size: 13px;
+font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 #DAY_NAME {
+color: #555;  
 font-size: 20px;
+font-family: "CrimsonRoman", "Times New Roman", Georgia, serif;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
