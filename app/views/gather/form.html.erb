@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <title> KiloCaloKiller </title>
+      <script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+      <style>
+      body { width: 1000px; margin: 20px auto;}
+      </style>
+    </head>
+
+    <body>
+      <h1> Please Enter Your Weight <%=@weight%> <h1>
+        <ul>
+          <%= form_tag(method: "post") do %>
+          <% if @weight == 0 %> 
+             <li style="list-style-type: none;">
+               <%= text_field_tag(:weight, nil, placeholder: "Weight in pounds", onfocus:"this.placeholder = ''", maxlength: "4")%>
+             </li>
+          <% else%>
+             <li style="list-style-type: none;">    
+               <%= text_field_tag(:weight, @weight, maxlength: "4")%>
+             </li>
+          <% end%>
+          <% end%>
+        </ul>  
+    </body>
+</html>

@@ -1,8 +1,11 @@
 Kilocalocounter::Application.routes.draw do
-  get '/gather', controller: 'calorie', action: 'gather', as: 'gather'
   get '/my_week', controller: 'calorie', action: 'my_week', as: 'my_week'
-
+  post '/my_week', controller: 'calorie', action: 'update'
+  
   root "calorie#my_week"
+  
+  get '/form', controller: 'gather', action: 'form'
+  post '/form', controller: 'gather', action: 'update'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

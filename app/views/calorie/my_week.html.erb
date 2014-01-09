@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title> "My Week" </title>
-      <script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+      <title> "My Week" 
+      </title>
+      <script src="http://code.jquery.com/jquery-2.0.1.min.js">
+      </script>
       <style>
-      body { width: 1000px; margin: 20px auto;}
+        body { width: 1000px; margin: 20px auto;}
       </style>
     </head>
  <body>
      <ul style="list-style-type: none; display: inline-block;">
-         <li style="list-style-type: none;" id="DAY_NAME">
-         Constant Data
-         </li>  
-         <form>  
-          <li style="list-style-type: none;">
-            <input type="text" placeholder="Idle Burn Calories" id="BURN_DATA" name="IDLE_BURN" maxlength="4">
-          </li>
-         </form>
-         <form>
-          <li style="list-style-type: none;">
-            <input type="text" placeholder="Fasting Caloric Goal" id="BURN_DATA" name="FASTING_FUELAGE" maxlength="4">
-          </li>
-         </form>
-         <form>
-          <li style="list-style-type: none;">
-            <input type="text" placeholder="Non-Fasting Caloric Goal" id="BURN_DATA" name="LEAN_FUELAGE" maxlength="4">
-          </li>
-         </form>
-         <form>
-          <li style="list-style-type: none;">
-            <input type="date" id="BURN_DATA" name="DATE" maxlength="4">
-          </li>
-         </form> 
-      </ul>
+         <li style="list-style-type: none;" id="DAY_NAME"> Constant Data <%=@idle_burn%> | <%=@fasting_fuelage%> | <%=@lean_fuelage%> </li>
+       <%= form_tag(method: "post") do %>
+         <%if @idle_burn == 0 %>
+             <li style="list-style-type: none;">
+               <%= text_field_tag(:IDLE_BURN, nil, placeholder: @static_calories_placeholders[0], maxlength: "4")%>
+             </li>
+         <%else%>
+             <li style="list-style-type: none;">
+                <%= text_field_tag(:IDLE_BURN, @idle_burn, maxlength: "4")%>
+             </li>
+         <%end%>
+       <%end%>
+       <%= form_tag(method: "post") do %>
+         <%if @fasting_fuelage == 0 %> 
+             <li style="list-style-type: none;">
+               <%= text_field_tag(:FASTING_FUELAGE, nil, placeholder: @static_calories_placeholders[1], maxlength: "4")%>  
+             </li>
+         <%else%> 
+             <li style="list-style-type: none;">
+               <%= text_field_tag(:FASTING_FUELAGE, @fasting_fuelage, maxlength: "4")%>
+             </li>
+         <%end%>
+       <%end%>
+       <%= form_tag(method: "post") do %>  
+       <%if @lean_fuelage == 0 %>
+             <li style="list-style-type: none;">
+               <%= text_field_tag(:LEAN_FUELAGE, nil, placeholder: @static_calories_placeholders[2], maxlength: "4")%>  
+             </li>
+         <%else%> 
+             <li style="list-style-type: none;">
+               <%= text_field_tag(:LEAN_FUELAGE, @lean_fuelage, maxlength: "4")%> 
+             </li>
+         <%end%>
+         <%end%>
       <ul>
       </ul>
   <% 7.times do |day|%>
