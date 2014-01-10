@@ -15,35 +15,32 @@
        <%= form_tag(method: "post") do %>
          <%if @idle_burn == 0 %>
              <li style="list-style-type: none;">
-               <%= text_field_tag(:IDLE_BURN, nil, placeholder: @static_calories_placeholders[0], maxlength: "4")%>
+               <%= text_field_tag(:IDLE_BURN, nil, placeholder: @static_calories_placeholders[0], maxlength: "4", size: 20)%>
              </li>
          <%else%>
              <li style="list-style-type: none;">
-                <%= text_field_tag(:IDLE_BURN, @idle_burn, maxlength: "4")%>
+               <%= text_field_tag(:IDLE_BURN, @idle_burn, maxlength: "4", size: 3, onclick: "this.select()", onblur: "update()")%> Idle Burn Calories
              </li>
          <%end%>
-       <%end%>
-       <%= form_tag(method: "post") do %>
-         <%if @fasting_fuelage == 0 %> 
+       <%if @fasting_fuelage == 0 %> 
              <li style="list-style-type: none;">
-               <%= text_field_tag(:FASTING_FUELAGE, nil, placeholder: @static_calories_placeholders[1], maxlength: "4")%>  
+               <%= text_field_tag(:FASTING_FUELAGE, nil, placeholder: @static_calories_placeholders[1], maxlength: "4", size: 20)%>  
              </li>
          <%else%> 
              <li style="list-style-type: none;">
-               <%= text_field_tag(:FASTING_FUELAGE, @fasting_fuelage, maxlength: "4")%>
+               <%= text_field_tag(:FASTING_FUELAGE, @fasting_fuelage, maxlength: "4", size: 3, onclick: "this.select()")%> Fasting Caloric Goal
              </li>
          <%end%>
-       <%end%>
-       <%= form_tag(method: "post") do %>  
        <%if @lean_fuelage == 0 %>
              <li style="list-style-type: none;">
-               <%= text_field_tag(:LEAN_FUELAGE, nil, placeholder: @static_calories_placeholders[2], maxlength: "4")%>  
+               <%= text_field_tag(:LEAN_FUELAGE, nil, placeholder: @static_calories_placeholders[2], maxlength: "4", size: 20)%>  
              </li>
          <%else%> 
              <li style="list-style-type: none;">
-               <%= text_field_tag(:LEAN_FUELAGE, @lean_fuelage, maxlength: "4")%> 
+               <%= text_field_tag(:LEAN_FUELAGE, @lean_fuelage, maxlength: "4", size: 3, onclick: "this.select()")%> Lean Caloric Goal
              </li>
          <%end%>
+         <li style="list-style-type: none;"> <%= submit_tag "Submit Static Data" %> </li>
          <%end%>
       <ul>
       </ul>
@@ -62,4 +59,9 @@
       </ul>
   <% end %>
   </body>
+  <script>
+    function update(){
+    $.ajax({url: '/my_week', type: 'POST'})
+    }
+  </script>
  </html>
