@@ -11,36 +11,12 @@
     </head>
  <body>
      <ul style="list-style-type: none; display: inline-block;">
-         <li style="list-style-type: none;" id="DAY_NAME"> Constant Data <%=@idle_burn%> | <%=@fasting_fuelage%> | <%=@lean_fuelage%> </li>
-       <%= form_tag(method: "post") do %>
-         <%if @idle_burn == 0 %>
-             <li style="list-style-type: none;">
-               <%= text_field_tag(:IDLE_BURN, nil, placeholder: @static_calories_placeholders[0], maxlength: "4", size: 20)%>
-             </li>
-         <%else%>
-             <li style="list-style-type: none;">
-               <%= text_field_tag(:IDLE_BURN, @idle_burn, maxlength: "4", size: 3, onclick: "this.select()", onblur: "update()")%> Idle Burn Calories
-             </li>
-         <%end%>
-       <%if @fasting_fuelage == 0 %> 
-             <li style="list-style-type: none;">
-               <%= text_field_tag(:FASTING_FUELAGE, nil, placeholder: @static_calories_placeholders[1], maxlength: "4", size: 20)%>  
-             </li>
-         <%else%> 
-             <li style="list-style-type: none;">
-               <%= text_field_tag(:FASTING_FUELAGE, @fasting_fuelage, maxlength: "4", size: 3, onclick: "this.select()")%> Fasting Caloric Goal
-             </li>
-         <%end%>
-       <%if @lean_fuelage == 0 %>
-             <li style="list-style-type: none;">
-               <%= text_field_tag(:LEAN_FUELAGE, nil, placeholder: @static_calories_placeholders[2], maxlength: "4", size: 20)%>  
-             </li>
-         <%else%> 
-             <li style="list-style-type: none;">
-               <%= text_field_tag(:LEAN_FUELAGE, @lean_fuelage, maxlength: "4", size: 3, onclick: "this.select()")%> Lean Caloric Goal
-             </li>
-         <%end%>
-         <li style="list-style-type: none;"> <%= submit_tag "Submit Static Data" %> </li>
+         <li style="list-style-type: none;" id="DAY_NAME"> Constant Data <%=@idle_burn%> | <%=@fasting_fuelage%> | <%=@lean_fuelage%> 
+         </li>
+         <% 3.times do |cal|%>
+         <li style="list-style-type: none;" id="DAY_NAME">
+           <%= text_field_tag(@static_calories_symbols[cal], @static_calories_instances_hash[@static_calories_instances[cal]], maxlength: "4", size: 3, onclick: "this.select()")%> <%=@static_calories_placeholders[cal]%>
+         </li>
          <%end%>
       <ul>
       </ul>
@@ -60,8 +36,13 @@
   <% end %>
   </body>
   <script>
-    function update(){
-    $.ajax({url: '/my_week', type: 'POST'})
-    }
+     $('#IDLE_BURN, #FASTING_FUELAGE, #LEAN_FUELAGE').change(function() {
+       var idle = $('#IDLE_BURN').val();
+       var fast = $('#FASTING_FUELAGE').val();
+       var lean = $('#LEAN_FUELAGE').val();
+       console.log( $('#IDLE_BURN').val());
+       $.ajax({url: '/my_week', type: 'POST', data: {"IDLE_BURN": idle, "FASTING_FUELAGE": fast, "LEAN_FUELAGE": lean}});
+      });
+
   </script>
  </html>
