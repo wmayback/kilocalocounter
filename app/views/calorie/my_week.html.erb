@@ -27,7 +27,7 @@
            </li>
            <% 10.times do |meal| %>  
          <li style="list-style-type: none;">
-           <%= text_field_tag(@meal[meal], dayfinder(@week[0]).meal1, placeholder: "Meal", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Meal'", maxlength: "4", size: 3, onclick: "this.select()")%>
+           <%= text_field_tag(@meal[meal], dayfinder(@week[day]).meal1, placeholder: "Meal", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Meal'", maxlength: "4", size: 3, onclick: "this.select()")%>
            <%= hidden_field_tag :weekday_name, @week[day] %>     
         </li>
          <% end %>         

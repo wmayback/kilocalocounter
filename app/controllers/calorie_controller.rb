@@ -22,6 +22,8 @@ class CalorieController < ApplicationController
   end
   
   def update
+    @week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    
     @static = Static_data.first
     @static.idle_burn = params[:IDLE_BURN]
     @static.fasting_fuelage = params[:FASTING_FUELAGE]
@@ -39,8 +41,22 @@ class CalorieController < ApplicationController
     @day_data.meal8 = params[:meal8]
     @day_data.meal9 = params[:meal9]
     @day_data.meal10 = params[:meal10]
-  
+    @day_data.save
+    
+    def day_total(day_of_the_week)
+      subject_day = Day.find_by_name(day_of_the_week)
+      total = subject_day.meal1 + subject_day.meal2 + subject_day.meal3 + subject_day.meal4 + subject_day.meal5 + subject_day.meal6 + subject_day.meal7 + subject_day.meal8 + subject_day.meal9 + subject_day.meal10
+      return total
+    end
+    
     @week_data = Week.first
+    @week_data.monday = day_total(@week[0])
+    @week_data.tuesday = day_total(@week[1])
+    @week_data.wednesday = day_total(@week[2])
+    @week_data.thursday = day_total(@week[3])
+    @week_data.friday = day_total(@week[4])
+    @week_data.saturday = day_total(@week[5])
+    @week_data.sunday = day_total(@week[6])
     
     redirect_to my_week_url
   end  
