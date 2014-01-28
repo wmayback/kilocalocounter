@@ -30,7 +30,19 @@
            <%= text_field_tag(@meal[meal], dayfinder(@week[day]).meal1, placeholder: "Meal", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Meal'", maxlength: "4", size: 3, onclick: "this.select()")%>
            <%= hidden_field_tag :weekday_name, @week[day] %>     
         </li>
-         <% end %>         
+         <% end %>
+        <li>
+          <%=day_total(@week[day])%>
+        </li>
+        <li>
+          Excess Burn
+        </li>
+        <li>
+          Fasting Excess
+        </li>
+        <li>
+          Lean Excess
+        </li>
       </ul>
   <% end %>
   </body>
