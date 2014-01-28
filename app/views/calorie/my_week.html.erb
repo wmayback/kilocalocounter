@@ -26,11 +26,10 @@
            <%= @week[day] %>
            </li>
            <% 10.times do |meal| %>  
-          <form>
-           <li style="list-style-type: none;">
-             <input type="text" placeholder="Meal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Meal'" onblur="submit_calories()" id="CALORIE_INPUT" name="<%=@week[day]%>MEAL<%=meal%>" maxlength="4">
-           </li>
-         </form>  
+         <li style="list-style-type: none;">
+           <%= text_field_tag(@meal[meal], dayfinder(@week[0]).meal1, placeholder: "Meal", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Meal'", maxlength: "4", size: 3, onclick: "this.select()")%>
+           <%= hidden_field_tag :weekday_name, @week[day] %>     
+        </li>
          <% end %>         
       </ul>
   <% end %>

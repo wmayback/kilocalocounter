@@ -11,12 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107211936) do
+ActiveRecord::Schema.define(version: 20140115004851) do
+
+  create_table "days", force: true do |t|
+    t.integer  "week_id"
+    t.string   "name"
+    t.integer  "meal1"
+    t.integer  "meal2"
+    t.integer  "meal3"
+    t.integer  "meal4"
+    t.integer  "meal5"
+    t.integer  "meal6"
+    t.integer  "meal7"
+    t.integer  "meal8"
+    t.integer  "meal9"
+    t.integer  "meal10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "static_data", force: true do |t|
     t.integer "idle_burn"
     t.integer "fasting_fuelage"
     t.integer "lean_fuelage"
+  end
+
+  create_table "weeks", force: true do |t|
+    t.integer  "monday"
+    t.integer  "tuesday"
+    t.integer  "wednesday"
+    t.integer  "thursday"
+    t.integer  "friday"
+    t.integer  "saturday"
+    t.integer  "sunday"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

@@ -2,6 +2,7 @@ class CalorieController < ApplicationController
   def my_week
     
     @week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    @meal = ['meal1','meal2','meal3','meal4','meal5','meal6','meal7','meal8','meal9','meal10']
     @static_calories_names = ['IDLE_BURN','FASTING_FUELAGE','LEAN_FUELAGE']
     @static_calories_symbols = [:IDLE_BURN,:FASTING_FUELAGE,:LEAN_FUELAGE]
     @static_calories_placeholders = ['Idle Burn Calories','Fasting Caloric Goal','Non-Fasting Goal']
@@ -26,6 +27,20 @@ class CalorieController < ApplicationController
     @static.fasting_fuelage = params[:FASTING_FUELAGE]
     @static.lean_fuelage = params[:LEAN_FUELAGE]
     @static.save
+    
+    @day_data = Day.find_by_name(:weekday_name)
+    @day_data.meal1 = params[:meal1]
+    @day_data.meal2 = params[:meal2]
+    @day_data.meal3 = params[:meal3]
+    @day_data.meal4 = params[:meal4]
+    @day_data.meal5 = params[:meal5]
+    @day_data.meal6 = params[:meal6]
+    @day_data.meal7 = params[:meal7]
+    @day_data.meal8 = params[:meal8]
+    @day_data.meal9 = params[:meal9]
+    @day_data.meal10 = params[:meal10]
+  
+    @week_data = Week.first
     
     redirect_to my_week_url
   end  
