@@ -10,40 +10,37 @@
       </style>
     </head>
  <body>
-     <ul style="list-style-type: none; display: inline-block;">
-         <li style="list-style-type: none;" id="DAY_NAME"> Constant Data <%=@idle_burn%> | <%=@fasting_fuelage%> | <%=@lean_fuelage%> 
-         </li>
-         <% 3.times do |cal|%>
-         <li style="list-style-type: none;" id="DAY_NAME">
-           <%= text_field_tag(@static_calories_symbols[cal], @static_calories_instances_hash[@static_calories_instances[cal]], maxlength: "4", size: 3, onclick: "this.select()")%> <%=@static_calories_placeholders[cal]%>
-         </li>
-         <%end%>
-      <ul>
-      </ul>
+       <div>
+         <left>
+            <li style="list-style-type: none;" id="DAY_NAME"> Constant Data </li>
+             <% 3.times do |cal|%>
+               <li style="list-style-type: none;" id="DAY_NAME">
+               <%= text_field_tag(@static_calories_symbols[cal], @static_calories_instances_hash[@static_calories_instances[cal]], maxlength: "4", size: 3, onclick: "this.select()")%> <%=@static_calories_placeholders[cal]%>
+               </li>
+               <%end%>
+         </left>
+       </div>
+   <div style="height:39px">
+   </div>
+  
+  <ul style="list-style-type: none; display: inline-block;">
   <% 7.times do |day|%>
       <ul style="list-style-type: none; display: inline-block;">
-        <li style="list-style-type: none;" id="DAY_NAME" name="<%=@week[day]%>">
+           <li style="list-style-type: none;" id="DAY_NAME" name="<%=@week[day]%>">
            <%= @week[day] %>
            </li>
            <% 10.times do |meal| %>  
-         <li style="list-style-type: none;">
-           <%= text_field_tag(@meal[meal], dayfinder(@week[day]).meal1, placeholder: "Meal", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Meal'", maxlength: "4", size: 3, onclick: "this.select()")%>
+           <li style="list-style-type: none;">
+           <%= text_field_tag(@meal[meal], day_arrayer(@week[day])[meal], placeholder: "Meal", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Meal'", maxlength: "4", size: 3, onclick: "this.select()")%>
            <%= hidden_field_tag :weekday_name, @week[day] %>     
-        </li>
-         <% end %>
-        <li>
-          <%=day_total(@week[day])%>
-        </li>
-        <li>
-          Excess Burn
-        </li>
-        <li>
-          Fasting Excess
-        </li>
-        <li>
-          Lean Excess
-        </li>
+           </li>
+           <% end %>
+           <li> Day total: <%=day_total(@week[day])%> </li>
+           <li> Excess Burn: </li>
+           <li> Fasting Excess: </li>
+           <li> Lean Excess: </li>
       </ul>
+   </ul>  
   <% end %>
   </body>
   <script>
