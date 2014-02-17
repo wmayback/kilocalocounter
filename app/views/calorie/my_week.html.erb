@@ -10,47 +10,32 @@
       </style>
     </head>
  <body>
-       <div>
-         <left>
-            <li style="list-style-type: none;" id="DAY_NAME"> Constant Data </li>
-             <% 3.times do |cal|%>
-               <li style="list-style-type: none;" id="DAY_NAME">
-               <%= text_field_tag(@static_calories_symbols[cal], @static_calories_instances_hash[@static_calories_instances[cal]], maxlength: "4", size: 3, onclick: "this.select()")%> <%=@static_calories_placeholders[cal]%>
-               </li>
-               <%end%>
-         </left>
+       <div id = "static_data_placer">
+          <%=render'static_data'%>
        </div>
-   <div style="height:39px">
-   </div>
-  
-  <ul style="list-style-type: none; display: inline-block;">
-  <% 7.times do |day|%>
-      <ul style="list-style-type: none; display: inline-block;">
-           <li style="list-style-type: none;" id="DAY_NAME" name="<%=@week[day]%>">
-           <%= @week[day] %>
-           </li>
-           <% 10.times do |meal| %>  
-           <li style="list-style-type: none;">
-           <%= text_field_tag(@meal[meal], day_arrayer(@week[day])[meal], placeholder: "Meal", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Meal'", maxlength: "4", size: 3, onclick: "this.select()")%>
-           <%= hidden_field_tag :weekday_name, @week[day] %>     
-           </li>
-           <% end %>
-           <li> Day total: <%=day_total(@week[day])%> </li>
-           <li> Excess Burn: </li>
-           <li> Fasting Excess: </li>
-           <li> Lean Excess: </li>
-      </ul>
-   </ul>  
-  <% end %>
-  </body>
-  <script>
-     $('#IDLE_BURN, #FASTING_FUELAGE, #LEAN_FUELAGE').change(function() {
+       <div>
+         <%=render'calorie_week'%>
+       </div>   
+ </body>
+ <script>
+     $('#IDLE_BURN, #FASTING_FUELAGE, #LEAN_FUELAGE, .meal1, .meal2, .meal3, .meal4, .meal5, .meal6, .meal7, .meal8, .meal9, .meal10').change(function() {
        var idle = $('#IDLE_BURN').val();
        var fast = $('#FASTING_FUELAGE').val();
        var lean = $('#LEAN_FUELAGE').val();
-       console.log( $('#IDLE_BURN').val());
-       $.ajax({url: '/my_week', type: 'POST', data: {"IDLE_BURN": idle, "FASTING_FUELAGE": fast, "LEAN_FUELAGE": lean}});
+       var day = $('.weekday_name').val();
+       var cal1 = $('.meal1').val();
+       var cal2 = $('.meal2').val();
+       var cal3 = $('.meal3').val();
+       var cal4 = $('.meal4').val();
+       var cal5 = $('.meal5').val();
+       var cal6 = $('.meal6').val();
+       var cal7 = $('.meal7').val();
+       var cal8 = $('.meal8').val();
+       var cal9 = $('.meal9').val();
+       var cal10 = $('.meal10').val();
+       console.log( $('.meal1').val());
+       console.log( $('.weekday_name').val());
+       $.ajax({url: '/my_week', type: 'POST', data: {"IDLE_BURN": idle, "FASTING_FUELAGE": fast, "LEAN_FUELAGE": lean, "weekday_name": day, "meal1": cal1, "meal2": cal2, "meal3": cal3, "meal4": cal4, "meal5": cal5, "meal6": cal6, "meal7": cal7, "meal8": cal8, "meal9": cal9, "meal10": cal10 }});
       });
-
-  </script>
+ </script>
  </html>

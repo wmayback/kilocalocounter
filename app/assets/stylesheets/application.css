@@ -1,8 +1,10 @@
-
-
 body
 {
 background-color:#2A323A;
+}
+
+#day_placer {
+ display: inline-block; 
 }
 
 #CALORIE_INPUT {
@@ -21,6 +23,17 @@ color: #555;
 font-size: 20px;
 font-family: "CrimsonRoman", "Times New Roman", Georgia, serif;
 }
+#WestBracket {
+color: #555;  
+font-size: 16px;
+font-family: "CrimsonRoman", "Times New Roman", Georgia, serif;
+}
+.endzone {
+color: white;  
+font-size: 16px;
+font-family: "CrimsonRoman", "Times New Roman", Georgia, serif;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

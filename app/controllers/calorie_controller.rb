@@ -30,7 +30,7 @@ class CalorieController < ApplicationController
     @static.lean_fuelage = params[:LEAN_FUELAGE]
     @static.save
     
-    @day_data = Day.find_by_name(:weekday_name)
+    @day_data = Day.find_by_name(params[:weekday_name])
     @day_data.meal1 = params[:meal1]
     @day_data.meal2 = params[:meal2]
     @day_data.meal3 = params[:meal3]

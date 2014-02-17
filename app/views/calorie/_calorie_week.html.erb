@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title> "My Week" 
+      </title>
+      <script src="http://code.jquery.com/jquery-2.0.1.min.js">
+      </script>
+      <style>
+        body { width: 1000px; margin: 20px auto;}
+      </style>
+    </head>
+
+<ul style="list-style-type: none; display: inline-block;">
+  <table style="border-collapse:collapse;">
+    <tbody id="WestBracket">
+           <% 10.times do |meal| %>  
+             <tr>
+               <td align="right" style="padding-top:3px;padding-bottom:4px;"><%= @meal[meal]%>:</td>   
+             <tr>
+           <% end %>
+           <tr><td align="right"> Day total:      </td></tr>
+           <tr><td align="right"> Excess Burn:    </td></tr>
+           <tr><td align="right"> Fasting Excess: </td></tr>
+           <tr><td align="right"> Lean Excess:    </td></tr>
+    </tbody>  
+  </table>
+</ul>
+
+<% 7.times do |day|%>
+  <ul style="list-style-type: none; display: inline-block;">
+    <table style="border-collapse:collapse;">
+      <thead id="DAY_NAME" name="<%=@week[day]%>">
+        <tr>
+          <th> <%= @week[day] %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% 10.times do |meal| %>  
+          <tr>
+            <td align="center"><%= text_field_tag(@meal[meal],
+                                   day_arrayer(@week[day])[meal],
+                                   class: @meal[meal],
+                                   placeholder: "Meal",
+                                   onfocus: "this.placeholder = ''",
+                                   onblur: "this.placeholder = 'Meal'",
+                                   maxlength: "4",
+                                   size: "2",
+                                   onclick: "this.select()")
+                                   %>
+                               <%= hidden_field_tag :weekday_name, @week[day], class: 'weekday_name' %>
+            </td>   
+          <tr>
+        <% end %>
+        <tr><td align="center" class="endzone" id="DayTotal"> <%=day_total(@week[day])%> </td></tr>
+        <tr><td align="center" class="endzone" id="ExcessBurn"> <%=day_total(@week[day])%> </td></tr>
+        <tr><td align="center" class="endzone" id="FastingExcess"> <%=day_total(@week[day])%> </td></tr>
+        <tr><td align="center" class="endzone" id="LeanExcess"> <%=day_total(@week[day])%> </td></tr>
+      </tbody>  
+    </table>
+  </ul>
+<% end %>
+</html> 
+ 
