@@ -1,3 +1,11 @@
+Static_data.destroy_all
+
+x = Static_data.new
+x.idle_burn = 2000
+x.fasting_fuelage = 1000
+x.lean_fuelage = 1500
+x.save
+
 Week.destroy_all
 a = Week.new
 a.save
@@ -24,6 +32,7 @@ monday.save
 end
 
 puts "10 meals have been made for every single week day"
+puts "static data has been created"
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
