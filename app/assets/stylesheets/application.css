@@ -1,10 +1,11 @@
 body
 {
 background-color:#2A323A;
+color:#555;
 }
 
 #day_placer {
- display: inline-block; 
+ display: inline-block;
 }
 
 #CALORIE_INPUT {
@@ -14,22 +15,22 @@ padding-left: 21px;
 padding-top: 1px;
 padding-right: 3px;
 padding-bottom: 1px;
-color: #555;  
+color: #555;
 font-size: 13px;
 font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 #DAY_NAME {
-color: #555;  
+color: #555;
 font-size: 20px;
 font-family: "CrimsonRoman", "Times New Roman", Georgia, serif;
 }
 #WestBracket {
-color: #555;  
+color: #555;
 font-size: 16px;
 font-family: "CrimsonRoman", "Times New Roman", Georgia, serif;
 }
 .endzone {
-color: white;  
+color: white;
 font-size: 16px;
 font-family: "CrimsonRoman", "Times New Roman", Georgia, serif;
 }

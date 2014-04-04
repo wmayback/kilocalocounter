@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title> "My Week"
+      </title>
+      <script src="http://code.jquery.com/jquery-2.0.1.min.js">
+      </script>
+      <style>
+        body { width: 1000px; margin: 20px auto;}
+      </style
+      <body>
+    </head>
+<ol id="monday">
+                                   <li>
+                                   <%= text_field_tag('meal1', Day.find_by_name('test').meal1,
+                                   placeholder: "Meal",
+                                   onfocus: "this.placeholder = ''",
+                                   onblur: "this.placeholder = 'Meal'",
+                                   maxlength: "4",
+                                   size: "2",
+                                   onclick: "this.select()")
+                                   %>
+                                   </li>
+                                   <li>
+                                   <%= text_field_tag('meal2', Day.find_by_name('test').meal2,
+                                   placeholder: "Meal",
+                                   onfocus: "this.placeholder = ''",
+                                   onblur: "this.placeholder = 'Meal'",
+                                   maxlength: "4",
+                                   size: "2",
+                                   onclick: "this.select()")
+                                   %>
+                                   </li>
+                                   <li>
+                                   <%= text_field_tag('meal3', Day.find_by_name('test').meal3,
+                                   placeholder: "Meal",
+                                   onfocus: "this.placeholder = ''",
+                                   onblur: "this.placeholder = 'Meal'",
+                                   maxlength: "4",
+                                   size: "2",
+                                   onclick: "this.select()")
+                                   %>
+                                   </li>
+                                   <li>
+                                   <%= text_field_tag('meal4', Day.find_by_name('test').meal4,
+                                   placeholder: "Meal",
+                                   onfocus: "this.placeholder = ''",
+                                   onblur: "this.placeholder = 'Meal'",
+                                   maxlength: "4",
+                                   size: "2",
+                                   onclick: "this.select()")
+                                   %>
+                                   </li>
+                                   <li>
+                                   <%= text_field_tag('meal5', Day.find_by_name('test').meal5,
+                                   placeholder: "Meal",
+                                   onfocus: "this.placeholder = ''",
+                                   onblur: "this.placeholder = 'Meal'",
+                                   maxlength: "4",
+                                   size: "2",
+                                   onclick: "this.select()")
+                                   %>
+                                   </li>
+                                   <li>
+                                   <%= text_field_tag('meal6', Day.find_by_name('test').meal6,
+                                   placeholder: "Meal",
+                                   onfocus: "this.placeholder = ''",
+                                   onblur: "this.placeholder = 'Meal'",
+                                   maxlength: "4",
+                                   size: "2",
+                                   onclick: "this.select()")
+                                   %>
+                                   </li>
+                                                                      <li>
+                                   <%= text_field_tag('meal7', Day.find_by_name('test').meal7,
+                                   placeholder: "Meal",
+                                   onfocus: "this.placeholder = ''",
+                                   onblur: "this.placeholder = 'Meal'",
+                                   maxlength: "4",
+                                   size: "2",
+                                   onclick: "this.select()")
+                                   %>
+                                   </li>
+                                   <li>
+                                   <%= text_field_tag('meal8', Day.find_by_name('test').meal8,
+                                   placeholder: "Meal",
+                                   onfocus: "this.placeholder = ''",
+                                   onblur: "this.placeholder = 'Meal'",
+                                   maxlength: "4",
+                                   size: "2",
+                                   onclick: "this.select()")
+                                   %>
+                                   </li>
+                                   <li>
+                                   <%= text_field_tag('meal9', Day.find_by_name('test').meal9,
+                                   placeholder: "Meal",
+                                   onfocus: "this.placeholder = ''",
+                                   onblur: "this.placeholder = 'Meal'",
+                                   maxlength: "4",
+                                   size: "2",
+                                   onclick: "this.select()")
+                                   %>
+                                   </li>
+                                   <li>
+                                   <%= text_field_tag('meal10', Day.find_by_name('test').meal10,
+                                   placeholder: "Meal",
+                                   onfocus: "this.placeholder = ''",
+                                   onblur: "this.placeholder = 'Meal'",
+                                   maxlength: "4",
+                                   size: "2",
+                                   onclick: "this.select()")
+                                   %>
+                                   </li>
+</ol>
+       <ul id="total">
+       <%=day_total('test')%>
+       </ul>
+</body>
+
+<script>
+$(document).ready(function() {
+$('#monday > li').change(function() {
+       var calarray = [];
+       var cal1 = calarray[0] = $('#meal1').val();
+       var cal2 = calarray[1] = $('#meal2').val();
+       var cal3 = calarray[2] = $('#meal3').val();
+       var cal4 = calarray[3] = $('#meal4').val();
+       var cal5 = calarray[4] = $('#meal5').val();
+       var cal6 = calarray[5] = $('#meal6').val();
+       var cal7 = calarray[6] = $('#meal7').val();
+       var cal8 = calarray[7] = $('#meal8').val();
+       var cal9 = calarray[8] = $('#meal9').val();
+       var cal10 = calarray[9] = $('#meal10').val();
+       $.ajax({url: '/index', type: 'POST', data: {"meal1": cal1, "meal2": cal2, "meal3": cal3, "meal4": cal4, "meal5": cal5, "meal6": cal6, "meal7": cal7, "meal8": cal8, "meal9": cal9, "meal10": cal10}});
+       $("#total").text(Number(cal1)+Number(cal2)+Number(cal3)+Number(cal4)+Number(cal5)+Number(cal6)+Number(cal7)+Number(cal8)+Number(cal9)+Number(cal10));
+});
+});
+</script>
+</html>

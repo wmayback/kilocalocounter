@@ -10,6 +10,8 @@
       </style>
     </head>
  <body>
+  <h1>Blah Blah</h1>
+  <h2>Cuss cuss</h2>
        <div id = "static_data_placer">
           <%=render'static_data'%>
        </div>
@@ -18,7 +20,11 @@
        </div>
  </body>
  <script>
-     $('#IDLE_BURN, #FASTING_FUELAGE, #LEAN_FUELAGE, .meal1, .meal2, .meal3, .meal4, .meal5, .meal6, .meal7, .meal8, .meal9, .meal10').change(function() {
+$(document).ready(function () {
+  $("h1").on("click", function() {
+      $("h2").hide();
+    });
+     $('#IDLE_BURN, #FASTING_FUELAGE, #LEAN_FUELAGE, #Monday > tr, #Tuesday > tr').change(function() {
        var idle = $('#IDLE_BURN').val();
        var fast = $('#FASTING_FUELAGE').val();
        var lean = $('#LEAN_FUELAGE').val();
@@ -36,6 +42,12 @@
        console.log( $('.meal1').val());
        console.log( $('.weekday_name').val());
        $.ajax({url: '/my_week', type: 'POST', data: {"IDLE_BURN": idle, "FASTING_FUELAGE": fast, "LEAN_FUELAGE": lean, "weekday_name": day, "meal1": cal1, "meal2": cal2, "meal3": cal3, "meal4": cal4, "meal5": cal5, "meal6": cal6, "meal7": cal7, "meal8": cal8, "meal9": cal9, "meal10": cal10 }});
+       var daytotal = Number(cal1)+Number(cal2)+Number(cal3)+Number(cal4)+Number(cal5)+Number(cal6)+Number(cal7)+Number(cal8)+Number(cal9)+Number(cal10)
+       $("#DayTotal").text(daytotal);
+       $("#ExcessBurn").text(Number(idle)-Number(daytotal));
+       $("#FastingExcess").text(Number(fast)-Number(daytotal));
+       $("#LeanExcess").text(Number(lean)-Number(daytotal));
       });
+    });
  </script>
  </html>

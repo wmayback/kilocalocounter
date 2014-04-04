@@ -1,12 +1,14 @@
 Kilocalocounter::Application.routes.draw do
   get '/my_week', controller: 'calorie', action: 'my_week', as: 'my_week'
   post '/my_week', controller: 'calorie', action: 'update'
-  
-  root "calorie#my_week"
-  
+
   get '/form', controller: 'gather', action: 'form'
   post '/form', controller: 'gather', action: 'update'
-  
+
+  get '/index', controller: 'mvp', action: 'index', as: 'index'
+  post '/index', controller: 'mvp', action: 'update'
+
+  root "mvp#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -47,7 +49,7 @@ Kilocalocounter::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

@@ -29,12 +29,12 @@
 <% 7.times do |day|%>
   <ul style="list-style-type: none; display: inline-block;">
     <table style="border-collapse:collapse;">
-      <thead id="DAY_NAME" name="<%=@week[day]%>">
+      <thead>
         <tr>
           <th> <%= @week[day] %> </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id=<%=@week[day]%> >
         <% 10.times do |meal| %>
           <tr>
             <td align="center"><%= text_field_tag(@meal[meal],

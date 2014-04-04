@@ -19,6 +19,11 @@ class CalorieController < ApplicationController
       return day+'MEAL'+meal_num
     end
 
+    respond_to do |format|
+    format.js
+    format.html
+    format.json
+    end
   end
 
   def update
