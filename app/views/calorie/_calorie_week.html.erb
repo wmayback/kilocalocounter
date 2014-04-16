@@ -53,8 +53,8 @@
         <% end %>
         <tr><td align="center" class="endzone" id="DayTotal"> <%=day_total(@week[day])%> </td></tr>
         <tr><td align="center" class="endzone" id="ExcessBurn"> <%= @idle_burn - day_total(@week[day])%> </td></tr>
-        <tr><td align="center" class="endzone" id="FastingExcess"> <%=day_total(@week[day])%> </td></tr>
-        <tr><td align="center" class="endzone" id="LeanExcess"> <%=day_total(@week[day])%> </td></tr>
+        <tr><td align="center" class="endzone" id="FastingExcess"> <%= fasting_total(@week[day]) - day_total(@week[day])%> </td></tr>
+        <tr><td align="center" class="endzone" id="LeanExcess"> <%= leaning_total(@week[day]) - day_total(@week[day])%> </td></tr>
       </tbody>
     </table>
   </ul>

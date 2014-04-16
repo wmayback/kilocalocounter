@@ -1,6 +1,8 @@
 Kilocalocounter::Application.routes.draw do
   get '/my_week', controller: 'calorie', action: 'my_week', as: 'my_week'
   post '/my_week', controller: 'calorie', action: 'update'
+  post '/static_update', controller: 'calorie', action: 'update_static_data'
+
 
   get '/form', controller: 'gather', action: 'form'
   post '/form', controller: 'gather', action: 'update'
