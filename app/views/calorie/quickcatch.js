@@ -1,3 +1,6 @@
+<script>
+$(document).ready(
+
 var monday_updater = function() {
 
        var idle = $('#IDLE_BURN').val();
@@ -30,28 +33,26 @@ var monday_updater = function() {
 
 };
 
-var other_day_updater = (function(day) {
+var other_day_updater = (function(day_name) {
 
        var idle = $('#IDLE_BURN').val();
        var fast = $('#FASTING_FUELAGE').val();
        var lean = $('#LEAN_FUELAGE').val();
 
-       <%=RUBY_DAY%> = day
+       var day = $(day_name + ' .weekday_name').val();
+       var cal1 = $(day_name + ' .meal1').val();
+       var cal2 = $(day_name + ' .meal2').val();
+       var cal3 = $(day_name + ' .meal3').val();
+       var cal4 = $(day_name + ' .meal4').val();
+       var cal5 = $(day_name + ' .meal5').val();
+       var cal6 = $(day_name + ' .meal6').val();
+       var cal7 = $(day_name + ' .meal7').val();
+       var cal8 = $(day_name + ' .meal8').val();
+       var cal9 = $(day_name + ' .meal9').val();
+       var cal10 = $(day_name + ' .meal10').val();
 
-       var day = $('#Tuesday .weekday_name').val();
-       var cal1 = $('#Tuesday .meal1').val();
-       var cal2 = $('#Tuesday .meal2').val();
-       var cal3 = $('#Tuesday .meal3').val();
-       var cal4 = $('#Tuesday .meal4').val();
-       var cal5 = $('#Tuesday .meal5').val();
-       var cal6 = $('#Tuesday .meal6').val();
-       var cal7 = $('#Tuesday .meal7').val();
-       var cal8 = $('#Tuesday .meal8').val();
-       var cal9 = $('#Tuesday .meal9').val();
-       var cal10 = $('#Tuesday .meal10').val();
-
-       console.log( $('#Tuesday .meal1').val());
-       console.log( $('#Tuesday .weekday_name').val());
+       console.log( $(day_name + ' .meal1').val());
+       console.log( $(day_name + ' .weekday_name').val());
 
        $.ajax({url: '/my_week', type: 'POST', data: {"weekday_name": day, "meal1": cal1, "meal2": cal2, "meal3": cal3, "meal4": cal4, "meal5": cal5, "meal6": cal6, "meal7": cal7, "meal8": cal8, "meal9": cal9, "meal10": cal10 }});
 
@@ -59,19 +60,22 @@ var other_day_updater = (function(day) {
        var previous_fasting_excess = $('#Monday #FastingExcess').text();
        var previous_lean_excess = $('#Monday #LeanExcess').text();
 
-       $("#Tuesday #DayTotal").text(daytotal);
-       $("#Tuesday #ExcessBurn").text(Number(idle)-Number(daytotal));
-       $("#Tuesday #FastingExcess").text(Number(fast)+Number(previous_fasting_excess)-Number(daytotal));
-       $("#Tuesday #LeanExcess").text(Number(lean)+Number(previous_lean_excess)-Number(daytotal));
+       $(day_name + " #DayTotal").text(daytotal);
+       $(day_name + " #ExcessBurn").text(Number(idle)-Number(daytotal));
+       $(day_name + " #FastingExcess").text(Number(fast)+Number(previous_fasting_excess)-Number(daytotal));
+       $(day_name + " #LeanExcess").text(Number(lean)+Number(previous_lean_excess)-Number(daytotal));
 };
 
 
 
       $('#Monday > tr').change(monday_updater() {});
-      $('#Tuesday > tr').change(other_day_updater(tuesday) {});
-      $('#Wednesday > tr').change(other_day_updater(wednesday) {});
-      $('#Thursday > tr').change(other_day_updater(thursday) {});
-      $('#Friday > tr').change(other_day_updater(friday) {});
-      $('#Saturday > tr').change(other_day_updater(saturday) {});
-      $('#Sunday > tr').change(other_day_updater(sunday) {});
+      $('#Tuesday > tr').change(other_day_updater('#Tuesday') {});
+      $('#Wednesday > tr').change(other_day_updater('#Wednesday') {});
+      $('#Thursday > tr').change(other_day_updater('#Thursday') {});
+      $('#Friday > tr').change(other_day_updater('#Friday') {});
+      $('#Saturday > tr').change(other_day_updater('#Saturday') {});
+      $('#Sunday > tr').change(other_day_updater('#Sunday') {});
 
+)
+
+</script>
