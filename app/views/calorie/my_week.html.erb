@@ -61,8 +61,14 @@
        $.ajax({url: '/my_week', type: 'POST', data: {"weekday_name": day, "meal1": cal1, "meal2": cal2, "meal3": cal3, "meal4": cal4, "meal5": cal5, "meal6": cal6, "meal7": cal7, "meal8": cal8, "meal9": cal9, "meal10": cal10 }});
 
        var daytotal = Number(cal1)+Number(cal2)+Number(cal3)+Number(cal4)+Number(cal5)+Number(cal6)+Number(cal7)+Number(cal8)+Number(cal9)+Number(cal10);
-       var previous_fasting_excess = $('#Monday #FastingExcess').text();
-       var previous_lean_excess = $('#Monday #LeanExcess').text();
+       if (day_name === '#Tuesday') {prev_day = "#Monday"}
+       else if (day_name === '#Wednesday') {prev_day = "#Tuesday"}
+       else if (day_name === '#Thursday') {prev_day = "#Wednesday"}
+       else if (day_name === '#Friday') {prev_day = "#Thursday"}
+       else if (day_name === '#Saturday') {prev_day = "#Friday"}
+       else if (day_name === '#Sunday') {prev_day = "#Saturday"}
+       var previous_fasting_excess = $(prev_day + '  #FastingExcess').text();
+       var previous_lean_excess = $(prev_day + ' #LeanExcess').text();
 
        $(day_name + " #DayTotal").text(daytotal);
        $(day_name + " #ExcessBurn").text(Number(idle)-Number(daytotal));
