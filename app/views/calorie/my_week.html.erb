@@ -86,12 +86,13 @@
 
 <script>
 
-$('#Monday > tr').change(monday_updater);
-$('#Tuesday > tr').change(other_day_updater('#Tuesday'));
-$('#Wednesday > tr').change(other_day_updater('#Wednesday'));
-$('#Thursday > tr').change(other_day_updater('#Thursday'));
-$('#Friday > tr').change(other_day_updater('#Friday'));
-$('#Saturday > tr').change(other_day_updater('#Saturday'));
-$('#Sunday > tr').change(other_day_updater('#Sunday'));
+$('#Monday > tr').change(monday_updater)
+$('#Tuesday > tr').change(function() {other_day_updater('#Tuesday')})
+$('#Wednesday > tr').change(function() {other_day_updater('#Wednesday')})
+$('#Thursday > tr').change(function() {other_day_updater('#Thursday')})
+$('#Friday > tr').change(function() {other_day_updater('#Friday')})
+$('#Saturday > tr').change(function() {other_day_updater('#Saturday')})
+$('#Sunday > tr').change(function() {other_day_updater('#Sunday')})
+
 </script>
 </html>
