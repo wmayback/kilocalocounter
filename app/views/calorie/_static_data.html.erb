@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title> "My Week" 
+      <title> "My Week"
       </title>
       <script src="http://code.jquery.com/jquery-2.0.1.min.js">
       </script>
@@ -9,12 +9,13 @@
         body { width: 1000px; margin: 20px auto;}
       </style>
     </head>
-    <left>
-      <li style="list-style-type: none;" id="DAY_NAME"> Constant Data </li>
+
+      <ul style="list-style-type: none;" id="DAY_NAME">
+      <li style="list-style-type: none;"> Constant Data </li>
       <% 3.times do |cal|%>
-      <li style="list-style-type: none;" id="DAY_NAME">
+      <li style="list-style-type: none;">
       <%= text_field_tag(@static_calories_symbols[cal], @static_calories_instances_hash[@static_calories_instances[cal]], maxlength: "4", size: 3, onclick: "this.select()")%> <%=@static_calories_placeholders[cal]%>
       </li>
       <%end%>
-     </left>
+     </ul>
 </html>

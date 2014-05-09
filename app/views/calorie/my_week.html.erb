@@ -72,10 +72,25 @@
 }
 
     var idle_updater = function() {
-      static_data();
 
+       static_data();
+       daytotal = day_totaler('#Monday');
 
+       $("#DayTotal").text(daytotal);
+       $("#ExcessBurn").text(Number(idle)-Number(daytotal));
+       $("#FastingExcess").text(Number(fast)-Number(daytotal));
+       $("#LeanExcess").text(Number(lean)-Number(daytotal));
 
+       <% 6.times do |day| %>
+
+          daytotal = day_totaler('#'+String(<%=@week[day+1]%>))
+          prev_day = String(<%='#'+@week[day]%>)
+          $(day_name + " #DayTotal").text(daytotal);
+          $(day_name + " #ExcessBurn").text(Number(idle)-Number(daytotal));
+          $(day_name + " #FastingExcess").text(Number(fast)+Number(previous_fasting_excess)-Number(daytotal));
+          $(day_name + " #LeanExcess").text(Number(lean)+Number(previous_lean_excess)-Number(daytotal));
+
+       <%end%>
     }
 </script>
 
@@ -101,6 +116,8 @@ $('#Thursday > tr').change(function() {day_updater('#Thursday')})
 $('#Friday > tr').change(function() {day_updater('#Friday')})
 $('#Saturday > tr').change(function() {day_updater('#Saturday')})
 $('#Sunday > tr').change(function() {day_updater('#Sunday')})
+
+$('#DAY_NAME > li').change(function() {idle_updater()})
 
 </script>
 </html>
