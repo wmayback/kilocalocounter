@@ -83,12 +83,17 @@
 
        <% 6.times do |day| %>
 
-          daytotal = day_totaler('#'+String(<%=@week[day+1]%>))
-          prev_day = String(<%='#'+@week[day]%>)
-          $(day_name + " #DayTotal").text(daytotal);
-          $(day_name + " #ExcessBurn").text(Number(idle)-Number(daytotal));
-          $(day_name + " #FastingExcess").text(Number(fast)+Number(previous_fasting_excess)-Number(daytotal));
-          $(day_name + " #LeanExcess").text(Number(lean)+Number(previous_lean_excess)-Number(daytotal));
+          console.log("<%=@day_id_array[day]%>")
+          console.log()
+
+          daytotal = day_totaler("<%=@day_id_array[day+1]%>")
+          prev_day = day_totaler("<%=@day_id_array[day]%>")
+          var previous_fasting_excess = $("<%=@day_id_array[day]%>" + '  #FastingExcess').text();
+          var previous_lean_excess = $("<%=@day_id_array[day]%>" + ' #LeanExcess').text();
+          $("<%=@day_id_array[day+1]%>" + " #DayTotal").text(daytotal);
+          $("<%=@day_id_array[day+1]%>" + " #ExcessBurn").text(Number(idle)-Number(daytotal));
+          $("<%=@day_id_array[day+1]%>" + " #FastingExcess").text(Number(fast)+Number(previous_fasting_excess)-Number(daytotal));
+          $("<%=@day_id_array[day+1]%>" + " #LeanExcess").text(Number(lean)+Number(previous_lean_excess)-Number(daytotal));
 
        <%end%>
     }
@@ -117,7 +122,7 @@ $('#Friday > tr').change(function() {day_updater('#Friday')})
 $('#Saturday > tr').change(function() {day_updater('#Saturday')})
 $('#Sunday > tr').change(function() {day_updater('#Sunday')})
 
-$('#DAY_NAME > li').change(function() {idle_updater()})
+$('#DAY_NAME > li').change(idle_updater)
 
 </script>
 </html>

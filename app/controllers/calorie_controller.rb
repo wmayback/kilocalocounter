@@ -2,6 +2,7 @@ class CalorieController < ApplicationController
   def my_week
 
     @week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    @day_id_array = ['#Monday','#Tuesday','#Wednesday','#Thursday','#Friday','#Saturday','#Sunday']
     @meal = ['meal1','meal2','meal3','meal4','meal5','meal6','meal7','meal8','meal9','meal10']
     @static_calories_names = ['IDLE_BURN','FASTING_FUELAGE','LEAN_FUELAGE']
     @static_calories_symbols = [:IDLE_BURN,:FASTING_FUELAGE,:LEAN_FUELAGE]
