@@ -29,7 +29,7 @@
 
       var day_totaler = function(day_name) {
         day_dissector(day_name)
-        var day_total = Number(cal1)+Number(cal2)+Number(cal3)+Number(cal4)+Number(cal5)+Number(cal6)+Number(cal7)+Number(cal8)+Number(cal9)+Number(cal10);
+        day_total = Number(cal1)+Number(cal2)+Number(cal3)+Number(cal4)+Number(cal5)+Number(cal6)+Number(cal7)+Number(cal8)+Number(cal9)+Number(cal10);
         return day_total
       }
 
@@ -37,7 +37,7 @@
 
         static_data();
         day_dissector(day_name);
-        var daytotal = day_totaler(day_name);
+        day_totaler(day_name);
 
        console.log( $(day_name + ' .meal1').val());
        console.log( $(day_name + ' .weekday_name').val());
@@ -57,34 +57,34 @@
        };
 
        if (day_name === '#Monday') {
-       $("#DayTotal").text(daytotal);
-       $("#ExcessBurn").text(Number(idle)-Number(daytotal));
-       $("#FastingExcess").text(Number(fast)-Number(daytotal));
-       $("#LeanExcess").text(Number(lean)-Number(daytotal));
+       $("#DayTotal").text(day_total);
+       $("#ExcessBurn").text(Number(idle)-Number(day_total));
+       $("#FastingExcess").text(Number(fast)-Number(day_total));
+       $("#LeanExcess").text(Number(lean)-Number(day_total));
        }
        else {
-       $(day_name + " #DayTotal").text(daytotal);
-       $(day_name + " #ExcessBurn").text(Number(idle)-Number(daytotal));
-       $(day_name + " #FastingExcess").text(Number(fast)+Number(previous_fasting_excess)-Number(daytotal));
-       $(day_name + " #LeanExcess").text(Number(lean)+Number(previous_lean_excess)-Number(daytotal));
+       $(day_name + " #DayTotal").text(day_total);
+       $(day_name + " #ExcessBurn").text(Number(idle)-Number(day_total));
+       $(day_name + " #FastingExcess").text(Number(fast)+Number(previous_fasting_excess)-Number(day_total));
+       $(day_name + " #LeanExcess").text(Number(lean)+Number(previous_lean_excess)-Number(day_total));
        };
 
+       idle_updater();
 }
 
     var idle_updater = function() {
 
        static_data();
-       daytotal = day_totaler('#Monday');
+       day_totaler('#Monday');
 
-       $("#DayTotal").text(daytotal);
-       $("#ExcessBurn").text(Number(idle)-Number(daytotal));
-       $("#FastingExcess").text(Number(fast)-Number(daytotal));
-       $("#LeanExcess").text(Number(lean)-Number(daytotal));
+       $("#DayTotal").text(day_total);
+       $("#ExcessBurn").text(Number(idle)-Number(day_total));
+       $("#FastingExcess").text(Number(fast)-Number(day_total));
+       $("#LeanExcess").text(Number(lean)-Number(day_total));
+
+       $.ajax({url: '/my_week', type: 'POST', data: {"weekday_name": day, "meal1": cal1, "meal2": cal2, "meal3": cal3, "meal4": cal4, "meal5": cal5, "meal6": cal6, "meal7": cal7, "meal8": cal8, "meal9": cal9, "meal10": cal10 }});
 
        <% 6.times do |day| %>
-
-          console.log("<%=@day_id_array[day]%>")
-          console.log()
 
           daytotal = day_totaler("<%=@day_id_array[day+1]%>")
           prev_day = day_totaler("<%=@day_id_array[day]%>")
@@ -94,6 +94,8 @@
           $("<%=@day_id_array[day+1]%>" + " #ExcessBurn").text(Number(idle)-Number(daytotal));
           $("<%=@day_id_array[day+1]%>" + " #FastingExcess").text(Number(fast)+Number(previous_fasting_excess)-Number(daytotal));
           $("<%=@day_id_array[day+1]%>" + " #LeanExcess").text(Number(lean)+Number(previous_lean_excess)-Number(daytotal));
+
+          $.ajax({url: '/my_week', type: 'POST', data: {"weekday_name": day, "meal1": cal1, "meal2": cal2, "meal3": cal3, "meal4": cal4, "meal5": cal5, "meal6": cal6, "meal7": cal7, "meal8": cal8, "meal9": cal9, "meal10": cal10 }});
 
        <%end%>
     }
@@ -123,6 +125,7 @@ $('#Saturday > tr').change(function() {day_updater('#Saturday')})
 $('#Sunday > tr').change(function() {day_updater('#Sunday')})
 
 $('#DAY_NAME > li').change(idle_updater)
+
 
 </script>
 </html>
