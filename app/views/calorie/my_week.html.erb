@@ -27,6 +27,12 @@
         lean = $('#LEAN_FUELAGE').val();
       }
 
+      var static_updater = function() {
+        static_data();
+        $.ajax({url: '/static_update', type: 'POST', data: { "IDLE_BURN": idle, "FASTING_FUELAGE": fast, "LEAN_FUELAGE": lean }});
+        idle_updater();
+      }
+
       var day_totaler = function(day_name) {
         day_dissector(day_name)
         day_total = Number(cal1)+Number(cal2)+Number(cal3)+Number(cal4)+Number(cal5)+Number(cal6)+Number(cal7)+Number(cal8)+Number(cal9)+Number(cal10);
@@ -124,8 +130,9 @@ $('#Friday > tr').change(function() {day_updater('#Friday')})
 $('#Saturday > tr').change(function() {day_updater('#Saturday')})
 $('#Sunday > tr').change(function() {day_updater('#Sunday')})
 
-$('#DAY_NAME > li').change(idle_updater)
+$('#DAY_NAME > li').change(static_updater)
 
+$(document).ready(idle_updater);
 
 </script>
 </html>

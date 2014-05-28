@@ -44,3 +44,6 @@ function day_dissector(day_name)
        $("#FastingExcess").text(Number(fast)-Number(daytotal));
        $("#LeanExcess").text(Number(lean)-Number(daytotal));
 };
+
+
+$(document).ready(idle_updater);
